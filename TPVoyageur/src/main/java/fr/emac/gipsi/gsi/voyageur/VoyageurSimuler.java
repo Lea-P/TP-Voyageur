@@ -3,6 +3,8 @@
  */
 package fr.emac.gipsi.gsi.voyageur;
 
+import fr.emac.gipsi.gsi.voyage.Position;
+
 /**
  * @author Truptil Sebastien - sebastien.truptil@gmail.com
  *
@@ -21,16 +23,14 @@ public class VoyageurSimuler extends AbstractVoyageur {
      */
     @Override
     protected void forward() {
-    	posTete=getPosTete();
-    	posBody=getPosBody();
+    	Position positionTete=getPosTete();
+    	Position positionBody=getPosBody() ;
     	String Direction=getDirection();
     	if (Direction=="N") {
-    		if (posTete(0)!=0) {
-    			posTete(0)=PosTete(0)-1;
-        		posBody(0)=PosBody(0)-1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setX(positionTete.getX()-1);
+        	positionBody.setX(positionBody.getX()-1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     	if (Direction=="W") {
     		if (posTete(1)!=0) {
