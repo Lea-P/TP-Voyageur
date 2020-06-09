@@ -33,28 +33,22 @@ public class VoyageurSimuler extends AbstractVoyageur {
         	setPosBody(positionBody);
     	}
     	if (Direction=="W") {
-    		if (posTete(1)!=0) {
-    			posTete(1)=PosTete(1)-1;
-        		posBody(1)=PosBody(1)-1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setY(positionTete.getY()-1);
+        	positionBody.setY(positionBody.getY()-1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     	if (Direction=="S") {
-    		if (posTete(0)!=LigMax) {
-    			posTete(0)=PosTete(0)+1;
-        		posBody(0)=PosBody(0)+1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setX(positionTete.getX()+1);
+        	positionBody.setX(positionBody.getX()+1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     	if (Direction=="E") {
-    		if (posTete(1)!=ColMax) {
-    			posTete(1)=PosTete(1)+1;
-        		posBody(1)=PosBody(1)+1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setY(positionTete.getY()+1);
+        	positionBody.setY(positionBody.getY()+1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     }
 
@@ -63,40 +57,32 @@ public class VoyageurSimuler extends AbstractVoyageur {
      */
     @Override
     protected void backward() {
-    	posTete=getPosTete();
-    	posBody=getPosBody();
+    	Position positionTete=getPosTete();
+    	Position positionBody=getPosBody() ;
     	String Direction=getDirection();
     	if (Direction=="N") {
-    		if (posBody(0)!=LigMax) {
-    			posTete(0)=PosTete(0)+1;
-        		posBody(0)=PosBody(0)+1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setX(positionTete.getX()+1);
+        	positionBody.setX(positionBody.getX()+1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     	if (Direction=="W") {
-    		if (posBody(1)!=ColMax) {
-    			posTete(1)=PosTete(1)+1;
-        		posBody(1)=PosBody(1)+1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setY(positionTete.getY()+1);
+        	positionBody.setY(positionBody.getY()+1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     	if (Direction=="S") {
-    		if (posBody(0)!=0) {
-    			posTete(0)=PosTete(0)-1;
-        		posBody(0)=PosBody(0)-1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setX(positionTete.getX()-1);
+        	positionBody.setX(positionBody.getX()-1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     	if (Direction=="E") {
-    		if (posBody(1)!=0) {
-    			posTete(1)=PosTete(1)-1;
-        		posBody(1)=PosBody(1)-1;
-        		setPosTete(posTete);
-        		setPosBody(posBody);
-    		}
+    		positionTete.setY(positionTete.getY()-1);
+        	positionBody.setY(positionBody.getY()-1);
+        	setPosTete(positionTete);
+        	setPosBody(positionBody);
     	}
     }
 
@@ -105,39 +91,31 @@ public class VoyageurSimuler extends AbstractVoyageur {
      */
     @Override
     protected void left() {
-    	posTete=getPosTete();
+    	Position positionTete=getPosTete();
     	String Direction=getDirection();
     	if (Direction=="N") {
-			if (posTete(1)!=0) {
-				posTete(0)=PosTete(0)+1;
-				posTete(1)=PosTete(1)-1;
-    			setPosTete(posTete);
-    			setDirection("W");
-			}
+    		positionTete.setX(positionTete.getX()+1);
+    		positionTete.setY(positionTete.getY()-1);
+        	setPosTete(positionTete);
+    		setDirection("W");
     	}
     	if (Direction=="W") {
-    		if (posTete(0)!=LigMax) {
-				posTete(0)=PosTete(0)+1;
-				posTete(1)=PosTete(1)+1;
-    			setPosTete(posTete);
-    			setDirection("S");
-			}
+    		positionTete.setX(positionTete.getX()+1);
+    		positionTete.setY(positionTete.getY()+1);
+	        setPosTete(positionTete);
+    		setDirection("S");
     	}
     	if (Direction=="S") {
-    		if (posTete(1)!=ColMax) {
-				posTete(0)=PosTete(0)-1;
-				posTete(1)=PosTete(1)+1;
-    			setPosTete(posTete);
-    			setDirection("E");
-			}
+    		positionTete.setX(positionTete.getX()-1);
+    		positionTete.setY(positionTete.getY()+1);
+	        setPosTete(positionTete);
+    		setDirection("E");
     	}
     	if (Direction=="E") {
-    		if (posTete(0)!=0) {
-				posTete(0)=PosTete(0)-1;
-				posTete(1)=PosTete(1)-1;
-    			setPosTete(posTete);
-    			setDirection("N");
-			}
+    		positionTete.setX(positionTete.getX()-1);
+    		positionTete.setY(positionTete.getY()-1);
+	        setPosTete(positionTete);
+    		setDirection("N");
     	}
     }
 
@@ -146,38 +124,31 @@ public class VoyageurSimuler extends AbstractVoyageur {
      */
     @Override
     protected void right() {
-    	posTete=getPosTete();
+    	Position positionTete=getPosTete();
     	String Direction=getDirection();
     	if (Direction=="N") {
-			if (posTete(1)!=ColMax) {
-				posTete(0)=PosTete(0)+1;
-				posTete(1)=PosTete(1)+1;
-    			setPosTete(posTete);
-    			setDirection("E");
-			}
+    		positionTete.setX(positionTete.getX()+1);
+    		positionTete.setY(positionTete.getY()+1);
+        	setPosTete(positionTete);
+    		setDirection("E");
     	}
     	if (Direction=="W") {
-    		if (posTete(0)!=0) {
-				posTete(0)=PosTete(0)-1;
-				posTete(1)=PosTete(1)+1;
-    			setPosTete(posTete);
-    			setDirection("N");
-			}
+    		positionTete.setX(positionTete.getX()-1);
+    		positionTete.setY(positionTete.getY()+1);
+        	setPosTete(positionTete);
+    		setDirection("N");
     	}
     	if (Direction=="S") {
-    		if (posTete(1)!=0) {
-				posTete(0)=PosTete(0)-1;
-				posTete(1)=PosTete(1)-1;
-    			setPosTete(posTete);
-    			setDirection("W");
-			}
+    		positionTete.setX(positionTete.getX()-1);
+    		positionTete.setY(positionTete.getY()-1);
+        	setPosTete(positionTete);
+    		setDirection("W");
     	}
     	if (Direction=="E") {
-    		if (posTete(0)!=LigMax) {
-				posTete(0)=PosTete(0)+1;
-				posTete(1)=PosTete(1)-1;
-    			setPosTete(posTete);
-    			setDirection("S");
-			}
+    		positionTete.setX(positionTete.getX()+1);
+    		positionTete.setY(positionTete.getY()-1);
+        	setPosTete(positionTete);
+    		setDirection("S");
     	}
     }
+}
