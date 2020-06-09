@@ -46,7 +46,6 @@ public class Voyage extends AbstractVoyage {
      */
     @Override
     public int showAll() {
-        // TODO Auto-generated method stub
         return 0;
     }
 
@@ -55,8 +54,6 @@ public class Voyage extends AbstractVoyage {
      */
     @Override
     public void lancement() {
-        // TODO Auto-generated method stub
-
     }
 
     /* (non-Javadoc)
@@ -66,5 +63,55 @@ public class Voyage extends AbstractVoyage {
     public void lancementSimuler() {
         // TODO Auto-generated method stub
         afficheEcran();
+        Planete actuelle = listPlanete.get(0);
+        ArrayList<Planete> alreadyVisit = new ArrayList<Planete>();
+        alreadyVisit.add(listPlanete.get(0));
+        getSimulatedvoyageur().getAlreadyVisit().add(listPlanete.get(0));
+        while (alreadyVisit != listPlanete) {
+            Planete prochaine = listPlanete.get(0).getListAccessibilite().get(0);
+            int distance = (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())^2-(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
+            for(Planete at : listPlanete.get(0).getListAccessibilite() ) {
+            	int distat = (at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())^2-(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
+            	if (distat < distance) {
+            		prochaine = at;
+            		distance = distat;
+            	}
+            }
+            if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()>0) {
+            	for (int i = getSimulatedvoyageur().getPosTete().getY(); i<prochaine.getPos().getY()+1; i++){
+                	getSimulatedvoyageur().goForward();
+                	wait(200);
+                	afficheEcran();
+                }
+            } else {
+            	for (int i = prochaine.getPos().getY(); i<getSimulatedvoyageur().getPosTete().getY(); i++){
+                	getSimulatedvoyageur().goBackward();
+                	wait(200);
+                	afficheEcran();
+                }
+            }
+            if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()>0) {
+                getSimulatedvoyageur().turnRight();
+                wait(200);
+            	afficheEcran();
+            	for (int i = getSimulatedvoyageur().getPosTete().getX(); i<prochaine.getPos().getX()+1; i++){
+                	getSimulatedvoyageur().goForward();
+                	wait(200);
+                	afficheEcran();
+            	}
+            } else {
+                getSimulatedvoyageur().turnLeft();
+                wait(200);
+            	afficheEcran();
+                for (int i = prochaine.getPos().getX(); i<getSimulatedvoyageur().getPosTete().getX(); i++){
+                	getSimulatedvoyageur().goBackward();
+                	wait(200);
+                	afficheEcran();
+                }
+            }
+            alreadyVisit.add(listPlanete.get(1));
+            alreadyVisit.add(listPlanete.get(2));
+            actuelle = prochaine;
+        }
     }
 }

@@ -40,7 +40,6 @@ public abstract class AbstractVoyage {
 	public AbstractVoyage(ArrayList<Planete> listPlanete,AbstractVoyageur simulatedVoyageur, AbstractVoyageur realVoyager) {
 		this(listPlanete,simulatedVoyageur);
 		this.realVoyager= realVoyager;
-
 	}
 
 

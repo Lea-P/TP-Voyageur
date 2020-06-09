@@ -20,7 +20,7 @@ public class Planete {
 	private Screen echantillonSol;
 	
 	private Position pos = new Position(0, 0);
-	private int rayon=1;
+	private int rayon=0;
 	private String colorName="Aqua";
 	
 	/**
