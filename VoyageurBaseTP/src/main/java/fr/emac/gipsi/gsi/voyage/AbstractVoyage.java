@@ -29,9 +29,9 @@ public abstract class AbstractVoyage {
 	 * 
 	 */
 	public AbstractVoyage(ArrayList<Planete> listPlanete, AbstractVoyageur simulatedVoyageur) {
-		this.listPlanete=listPlanete;
-		ecran = chemin();
-		visualisationAnimation = new InterfaceSimulation(this);
+		this.listPlanete = listPlanete;
+		this.ecran = chemin();
+		this.visualisationAnimation = new InterfaceSimulation(this);
 		this.simulatedvoyageur = simulatedVoyageur;
 	}
 
