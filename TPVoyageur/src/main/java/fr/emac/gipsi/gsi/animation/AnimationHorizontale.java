@@ -13,12 +13,12 @@ public class AnimationHorizontale extends AbstractAnimation {
 		showScreen(ecranDeb);
 		ecranInt=copyScreen(ecranDeb);
 		for(int i=0;i<ecranInt.getColMax()+1;i++){
-			for(int j=0;j<ecranInt.getColMax()/2;j++){
+			for(int j=0;j<ecranInt.getColMax()/2+1;j++){
 				ecranInt.updateColorByXY(2*j, i, ecranFin.getColorByXY(2*j,i));
 				ecranInt.updateColorByXY(2*j+1, ecranInt.getColMax()-i, ecranFin.getColorByXY(2*j+1,ecranInt.getColMax()-i));
 			}
-			ecranInt.updateColorByXY(ecranInt.getColMax(), i, ecranFin.getColorByXY(ecranInt.getColMax(),i));
-			this.wait(25);
+			ecranInt.updateColorByXY(ecranInt.getColMax(), ecranInt.getColMax()-i, ecranFin.getColorByXY(ecranInt.getColMax(),ecranInt.getColMax()-i));
+			this.wait(10);
 			this.showScreen(ecranInt);
 			
 		}

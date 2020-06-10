@@ -72,9 +72,9 @@ public abstract class AbstractAnimation {
 	public abstract void runAnimation();
 	
 	
-	public void wait(int timems){
+	public void wait(int d){
 		try {
-			Thread.sleep(timems);
+			Thread.sleep(d);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

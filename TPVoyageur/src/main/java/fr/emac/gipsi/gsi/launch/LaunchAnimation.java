@@ -7,8 +7,10 @@ import fr.emac.gipsi.gsi.animation.AbstractAnimation;
 import fr.emac.gipsi.gsi.animation.AnimationByColumn;
 import fr.emac.gipsi.gsi.animation.AnimationFlash;
 import fr.emac.gipsi.gsi.animation.AnimationHorizontale;
+import fr.emac.gipsi.gsi.animation.AnimationShrink;
 import fr.emac.gipsi.gsi.animation.AnimationSpirale;
 import fr.emac.gipsi.gsi.animation.AnimationSpirale2;
+import fr.emac.gipsi.gsi.animation.AnimationSplit;
 import fr.emac.gipsi.gsi.animation.AnimationVerticale;
 import fr.emac.gipsi.gsi.ecran.ListScreen;
 
@@ -23,17 +25,19 @@ public class LaunchAnimation {
 	 */
 	public static void main(String[] args) {
 		
-		AbstractAnimation aa = new AnimationHorizontale();
-		aa.setEcranDeb(ListScreen.first());
-		aa.setEcranFin(ListScreen.second());
+		AbstractAnimation aa = new AnimationShrink();
+		aa.setEcranDeb(ListScreen.typePsychic());
+		aa.setEcranFin(ListScreen.Black());
+		
+		aa.wait(1000);
 		
 		aa.runAnimation();
 
 		aa.wait(1000);
 		
-		AbstractAnimation ab = new AnimationHorizontale();
-		ab.setEcranDeb(ListScreen.second());
-		ab.setEcranFin(ListScreen.first());
+		AbstractAnimation ab = new AnimationSplit();
+		ab.setEcranDeb(ListScreen.Black());
+		ab.setEcranFin(ListScreen.Noctali());
 		
 		ab.runAnimation();
 
