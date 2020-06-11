@@ -71,8 +71,23 @@ public class Voyage extends AbstractVoyage {
     	getSimulatedvoyageur().takeEchantillonRoche(actuelle);
         while (alreadyVisit.size() != this.listPlanete.size()) {
         	ArrayList<Planete> visitPossible = actuelle.getListAccessibilite();
-        	for(Planete in : alreadyVisit ) {
+        	ArrayList<Planete> vuePossible = actuelle.getListAccessibilite();
+        	for ( Planete in : alreadyVisit ) {
         		visitPossible.remove(in);
+        		vuePossible.remove(in);
+        	}
+        	for (Planete in : visitPossible ) {
+        		vuePossible.remove(in);
+        		if (in.getEchantillonSol()==null) {
+        			getSimulatedvoyageur().takePicture(in);
+                    alreadyVisit.add(in);
+        		}
+        	}
+        	for (Planete vu : vuePossible ) {
+        		if (vu.getEchantillonSol()==null) {
+            		getSimulatedvoyageur().takePicture(vu);
+                    alreadyVisit.add(vu);
+        		}
         	}
             Planete prochaine = visitPossible.get(0);
             int distance = (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
@@ -243,11 +258,14 @@ public class Voyage extends AbstractVoyage {
             }
             wait(1000);
             if (getSimulatedvoyageur().getPosBody().getX()==prochaine.getPos().getX() && getSimulatedvoyageur().getPosBody().getY()==prochaine.getPos().getY()) {
-            	getSimulatedvoyageur().takePicture(prochaine);
-            	getSimulatedvoyageur().takeEchantillonSol(prochaine);
-            	getSimulatedvoyageur().takeEchantillonRoche(prochaine);
-            	wait(500);
-            	alreadyVisit.add(prochaine);
+            	if (alreadyVisit.contains(prochaine)) {
+            	} else {
+                	getSimulatedvoyageur().takePicture(prochaine);
+                	getSimulatedvoyageur().takeEchantillonSol(prochaine);
+                	getSimulatedvoyageur().takeEchantillonRoche(prochaine);
+                	wait(500);
+                	alreadyVisit.add(prochaine);
+            	}
                 actuelle = prochaine;
             }
             wait(10);

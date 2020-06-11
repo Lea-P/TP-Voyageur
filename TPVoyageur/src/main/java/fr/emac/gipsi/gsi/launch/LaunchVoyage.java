@@ -46,9 +46,6 @@ public class LaunchVoyage {
         p4.getPos().setY(8);
         listPlanete.add(p4);
         
-        Planete p5 = new Planete();
-        listPlanete.add(p5);
-
         p1.getListAccessibilite().add(p2);
         p2.getListAccessibilite().add(p1);
         p2.getListAccessibilite().add(p3);
@@ -56,11 +53,18 @@ public class LaunchVoyage {
         p3.getListAccessibilite().add(p4);
         p4.getListAccessibilite().add(p3);
         
+        p1.getListVisibilite().add(p2);
+        p2.getListVisibilite().add(p1);
+        p2.getListVisibilite().add(p3);
+        p3.getListVisibilite().add(p2);
+        p3.getListVisibilite().add(p4);
+        p4.getListVisibilite().add(p3);
+        
         AbstractVoyageur simulatedVoyageur = new VoyageurSimuler(); // voyageur qui va faire le parcours
         
-        simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX());
+        simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX()+1);
         simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY());
-        simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX()-1);
+        simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX());
         simulatedVoyageur.getPosBody().setY(listPlanete.get(0).getPos().getY());
         simulatedVoyageur.setDirection("S");
         
