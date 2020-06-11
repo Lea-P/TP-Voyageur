@@ -62,15 +62,15 @@ public abstract class AbstractVoyageur {
     }
 
     public void takeEchantillonSol(Planete p) {
-        energy = energy + 1;
         if (p.getEchantillonSol() != null) {
+            energy = energy + 1;
             listEchantillonSol.add(p.getEchantillonSol());
         }
     }
 
     public void takeEchantillonRoche(Planete p) {
-        energy = energy + 1;
         if (p.getEchantillonRoche() != null) {
+            energy = energy + 1;
             listEchantillonRoche.add(p.getEchantillonRoche());
         }
     }
