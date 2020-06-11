@@ -25,7 +25,7 @@ public class LaunchAnimation {
 	 */
 	public static void main(String[] args) {
 		
-		AbstractAnimation aa = new AnimationShrink();
+		AbstractAnimation aa = new AnimationFlash();
 		aa.setEcranDeb(ListScreen.typePsychic());
 		aa.setEcranFin(ListScreen.Black());
 		
@@ -35,7 +35,7 @@ public class LaunchAnimation {
 
 		aa.wait(1000);
 		
-		AbstractAnimation ab = new AnimationSplit();
+		AbstractAnimation ab = new AnimationFlash();
 		ab.setEcranDeb(ListScreen.Black());
 		ab.setEcranFin(ListScreen.Noctali());
 		
