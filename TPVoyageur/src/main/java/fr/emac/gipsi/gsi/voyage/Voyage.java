@@ -73,15 +73,7 @@ public class Voyage extends AbstractVoyage {
         	ArrayList<Planete> visitPossible = actuelle.getListAccessibilite();
         	ArrayList<Planete> vuePossible = actuelle.getListAccessibilite();
         	for ( Planete in : alreadyVisit ) {
-        		visitPossible.remove(in);
         		vuePossible.remove(in);
-        	}
-        	for (Planete in : visitPossible ) {
-        		vuePossible.remove(in);
-        		if (in.getEchantillonSol()==null) {
-        			getSimulatedvoyageur().takePicture(in);
-                    alreadyVisit.add(in);
-        		}
         	}
         	for (Planete vu : vuePossible ) {
         		if (vu.getEchantillonSol()==null) {
@@ -256,7 +248,7 @@ public class Voyage extends AbstractVoyage {
                     }
                 }
             }
-            wait(1000);
+            wait(1500);
             if (getSimulatedvoyageur().getPosBody().getX()==prochaine.getPos().getX() && getSimulatedvoyageur().getPosBody().getY()==prochaine.getPos().getY()) {
             	if (alreadyVisit.contains(prochaine)) {
             	} else {

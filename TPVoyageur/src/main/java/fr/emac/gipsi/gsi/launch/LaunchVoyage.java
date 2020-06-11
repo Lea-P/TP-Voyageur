@@ -25,6 +25,7 @@ public class LaunchVoyage {
         Planete p2 = new Planete();
         p2.setColorName("DeepPink");
         p2.setEchantillonRoche(new Screen());
+        p2.setEchantillonSol(new Screen());
         p2.setRayon(0);
         p2.getPos().setX(3);
         p2.getPos().setY(4);
@@ -33,6 +34,7 @@ public class LaunchVoyage {
         Planete p3 = new Planete();
         p3.setColorName("DeepPink");
         p3.setEchantillonRoche(new Screen());
+        p3.setEchantillonSol(new Screen());
         p3.setRayon(0);
         p3.getPos().setX(6);
         p3.getPos().setY(7);
@@ -62,11 +64,11 @@ public class LaunchVoyage {
         
         AbstractVoyageur simulatedVoyageur = new VoyageurSimuler(); // voyageur qui va faire le parcours
         
-        simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX()+1);
-        simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY());
+        simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX());
+        simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY()+1);
         simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX());
         simulatedVoyageur.getPosBody().setY(listPlanete.get(0).getPos().getY());
-        simulatedVoyageur.setDirection("S");
+        simulatedVoyageur.setDirection("E");
         
         Voyage voyage = new Voyage(listPlanete, simulatedVoyageur);
 
