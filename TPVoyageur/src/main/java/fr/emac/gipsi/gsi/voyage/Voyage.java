@@ -66,17 +66,11 @@ public class Voyage extends AbstractVoyage {
         Planete actuelle = this.listPlanete.get(0);
         ArrayList<Planete> alreadyVisit = new ArrayList<Planete>();
         alreadyVisit.add(actuelle);
-        while (alreadyVisit != this.listPlanete) {
+        while (alreadyVisit.size() != this.listPlanete.size()) {
             Planete prochaine = actuelle.getListAccessibilite().get(0);
-            int distance = (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())^2-(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
+            int distance = (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
             for(Planete at : actuelle.getListAccessibilite() ) {
-            	int distat = (at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())^2-(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())^2;
-            	if (distat<0) {
-            		distat=-distat;
-            	}
-            	if (distance<0) {
-            		distance=-distance;
-            	}
+            	int distat = (at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
             	if (distat >= distance || alreadyVisit.contains(at)) {
             	} else {
             		prochaine = at;
