@@ -7,6 +7,7 @@ import fr.emac.gipsi.gsi.animation.AbstractAnimation;
 import fr.emac.gipsi.gsi.animation.AnimationByColumn;
 import fr.emac.gipsi.gsi.animation.AnimationFlash;
 import fr.emac.gipsi.gsi.animation.AnimationHorizontale;
+import fr.emac.gipsi.gsi.animation.AnimationRideau;
 import fr.emac.gipsi.gsi.animation.AnimationShrink;
 import fr.emac.gipsi.gsi.animation.AnimationSpirale;
 import fr.emac.gipsi.gsi.animation.AnimationSpirale2;
@@ -25,8 +26,8 @@ public class LaunchAnimation {
 	 */
 	public static void main(String[] args) {
 		
-		AbstractAnimation aa = new AnimationShrink();
-		aa.setEcranDeb(ListScreen.typePsychic());
+		AbstractAnimation aa = new AnimationRideau();
+		aa.setEcranDeb(ListScreen.typeDark());
 		aa.setEcranFin(ListScreen.Black());
 		
 		aa.wait(1000);
@@ -35,7 +36,7 @@ public class LaunchAnimation {
 
 		aa.wait(1000);
 		
-		AbstractAnimation ab = new AnimationSplit();
+		AbstractAnimation ab = new AnimationRideau();
 		ab.setEcranDeb(ListScreen.Black());
 		ab.setEcranFin(ListScreen.Noctali());
 		
