@@ -67,26 +67,32 @@ public class Voyage extends AbstractVoyage {
         ArrayList<Planete> alreadyVisit = new ArrayList<Planete>();
         alreadyVisit.add(actuelle);
         while (alreadyVisit.size() != this.listPlanete.size()) {
-            Planete prochaine = actuelle.getListAccessibilite().get(0);
+        	ArrayList<Planete> visitPossible = actuelle.getListAccessibilite();
+        	for(Planete in : alreadyVisit ) {
+        		visitPossible.remove(in);
+        	}
+            Planete prochaine = visitPossible.get(0);
             int distance = (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
-            for(Planete at : actuelle.getListAccessibilite() ) {
+            for(Planete at : visitPossible ) {
             	int distat = (at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
-            	if (distat >= distance || alreadyVisit.contains(at)) {
-            	} else {
+            	if (distat < distance) {
             		prochaine = at;
             		distance = distat;
             	}
             }
             wait(10);
-            if (getSimulatedvoyageur().getDirection()=="E" && getSimulatedvoyageur().getPosBody().getY()!=prochaine.getPos().getY()) {
-            	if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()>=0) {
-                	for (int i = getSimulatedvoyageur().getPosTete().getY(); i<prochaine.getPos().getY()+1; i++){
+            if (getSimulatedvoyageur().getDirection()=="E") {
+            	if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()>0) {
+            		int Y = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = Y; i<prochaine.getPos().getY()+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
+            	} else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
-                	for (int i = prochaine.getPos().getY(); i<getSimulatedvoyageur().getPosTete().getY()+1; i++){
+                	int Y = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = prochaine.getPos().getY(); i<Y-1; i++){
                     	getSimulatedvoyageur().goBackward();
                     	wait(200);
                     	afficheEcran();
@@ -96,99 +102,114 @@ public class Voyage extends AbstractVoyage {
                     getSimulatedvoyageur().turnRight();
                     wait(200);
                 	afficheEcran();
-                	for (int i = getSimulatedvoyageur().getPosTete().getX(); i<prochaine.getPos().getX()+1; i++){
+                	int X = getSimulatedvoyageur().getPosTete().getX();
+                	for (int i = X; i<prochaine.getPos().getX()+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                 	}
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
                     getSimulatedvoyageur().turnLeft();
                     wait(200);
                 	afficheEcran();
-                    for (int i = prochaine.getPos().getX(); i<getSimulatedvoyageur().getPosTete().getX()+1; i++){
+                	int X = getSimulatedvoyageur().getPosTete().getX();
+                    for (int i = prochaine.getPos().getX(); i<X+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
                 }
-            }
-            if (getSimulatedvoyageur().getDirection()=="W" && getSimulatedvoyageur().getPosBody().getY()!=prochaine.getPos().getY()) {
-            	if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()>=0) {
-                	for (int i = getSimulatedvoyageur().getPosTete().getY(); i<prochaine.getPos().getY()+1; i++){
+            } else if (getSimulatedvoyageur().getDirection()=="W") {
+            	if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()<0) {
+            		int Y = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = prochaine.getPos().getY(); i<Y+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
-                	for (int i = prochaine.getPos().getY(); i<getSimulatedvoyageur().getPosTete().getY()+1; i++){
+                	int Y = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = Y; i<prochaine.getPos().getY()-1; i++){
                     	getSimulatedvoyageur().goBackward();
                     	wait(200);
                     	afficheEcran();
                     }
                 }
-                if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()>0) {
+                if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()<0) {
                     getSimulatedvoyageur().turnRight();
                     wait(200);
                 	afficheEcran();
-                	for (int i = getSimulatedvoyageur().getPosTete().getX(); i<prochaine.getPos().getX()+1; i++){
+                	int X = getSimulatedvoyageur().getPosTete().getX();
+                	for (int i = prochaine.getPos().getX(); i<X+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                 	}
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
                     getSimulatedvoyageur().turnLeft();
                     wait(200);
                 	afficheEcran();
-                    for (int i = prochaine.getPos().getX(); i<getSimulatedvoyageur().getPosTete().getX()+1; i++){
+                	int X = getSimulatedvoyageur().getPosTete().getX();
+                    for (int i = X; i<prochaine.getPos().getX()+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
                 }
-            }
-            if (getSimulatedvoyageur().getDirection()=="N" && getSimulatedvoyageur().getPosBody().getX()!=prochaine.getPos().getX()) {
-            	if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()>=0) {
-                	for (int i = getSimulatedvoyageur().getPosTete().getX(); i<prochaine.getPos().getX()+1; i++){
+            } else if (getSimulatedvoyageur().getDirection()=="N") {
+            	if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()<0) {
+            		int X = getSimulatedvoyageur().getPosTete().getX();
+                	for (int i = prochaine.getPos().getX(); i<X+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
-                	for (int i = prochaine.getPos().getX(); i<getSimulatedvoyageur().getPosTete().getX()+1; i++){
+                	int X = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = X; i<prochaine.getPos().getX()-1; i++){
                     	getSimulatedvoyageur().goBackward();
                     	wait(200);
                     	afficheEcran();
                     }
                 }
-                if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()>0) {
+            	if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()>0) {
                     getSimulatedvoyageur().turnRight();
                     wait(200);
                 	afficheEcran();
-                	for (int i = getSimulatedvoyageur().getPosTete().getY(); i<prochaine.getPos().getY()+1; i++){
+                	int Y = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = Y; i<prochaine.getPos().getY()+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                 	}
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
                     getSimulatedvoyageur().turnLeft();
                     wait(200);
                 	afficheEcran();
-                    for (int i = prochaine.getPos().getY(); i<getSimulatedvoyageur().getPosTete().getY()+1; i++){
+                	int Y = getSimulatedvoyageur().getPosTete().getY();
+                    for (int i = prochaine.getPos().getY(); i<Y+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
                 }
-            }
-            if (getSimulatedvoyageur().getDirection()=="S" && getSimulatedvoyageur().getPosBody().getX()!=prochaine.getPos().getX()) {
-            	if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()>=0) {
-                	for (int i = getSimulatedvoyageur().getPosTete().getX(); i<prochaine.getPos().getX()+1; i++){
+            } else if (getSimulatedvoyageur().getDirection()=="S") {
+            	if (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()>0) {
+            		int X = getSimulatedvoyageur().getPosTete().getX();
+                	for (int i = X; i<prochaine.getPos().getX()+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                     }
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
-                	for (int i = prochaine.getPos().getX(); i<getSimulatedvoyageur().getPosTete().getX()+1; i++){
+                	int X = getSimulatedvoyageur().getPosTete().getX();
+                	for (int i = prochaine.getPos().getX(); i<X-1; i++){
                     	getSimulatedvoyageur().goBackward();
                     	wait(200);
                     	afficheEcran();
@@ -198,16 +219,19 @@ public class Voyage extends AbstractVoyage {
                     getSimulatedvoyageur().turnRight();
                     wait(200);
                 	afficheEcran();
-                	for (int i = getSimulatedvoyageur().getPosTete().getY(); i<prochaine.getPos().getY()+1; i++){
+                	int Y = getSimulatedvoyageur().getPosTete().getY();
+                	for (int i = prochaine.getPos().getY(); i<Y+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
                 	}
+                } else if (prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
                 } else {
                     getSimulatedvoyageur().turnLeft();
                     wait(200);
                 	afficheEcran();
-                    for (int i = getSimulatedvoyageur().getPosTete().getY(); i<prochaine.getPos().getY()+1; i++){
+                	int Y = getSimulatedvoyageur().getPosTete().getY();
+                    for (int i = Y; i<prochaine.getPos().getY()+1; i++){
                     	getSimulatedvoyageur().goForward();
                     	wait(200);
                     	afficheEcran();
