@@ -25,6 +25,7 @@ public class LaunchVoyage {
         Planete p2 = new Planete();
         p2.setColorName("DeepPink");
         p2.setEchantillonRoche(new Screen());
+        p2.setEchantillonSol(new Screen());
         p2.setRayon(0);
         p2.getPos().setX(3);
         p2.getPos().setY(4);
@@ -41,28 +42,33 @@ public class LaunchVoyage {
         Planete p4 = new Planete();
         p4.setColorName("DeepPink");
         p4.setEchantillonRoche(new Screen());
+        p4.setEchantillonSol(new Screen());
         p4.setRayon(0);
         p4.getPos().setX(2);
         p4.getPos().setY(8);
         listPlanete.add(p4);
         
-        Planete p5 = new Planete();
-        listPlanete.add(p5);
-
         p1.getListAccessibilite().add(p2);
         p2.getListAccessibilite().add(p1);
         p2.getListAccessibilite().add(p3);
         p3.getListAccessibilite().add(p2);
-        p3.getListAccessibilite().add(p4);
-        p4.getListAccessibilite().add(p3);
+        p2.getListAccessibilite().add(p4);
+        p4.getListAccessibilite().add(p2);
+        
+        p1.getListVisibilite().add(p2);
+        p2.getListVisibilite().add(p1);
+        p2.getListVisibilite().add(p3);
+        p3.getListVisibilite().add(p2);
+        p2.getListVisibilite().add(p4);
+        p4.getListVisibilite().add(p2);
         
         AbstractVoyageur simulatedVoyageur = new VoyageurSimuler(); // voyageur qui va faire le parcours
         
         simulatedVoyageur.getPosTete().setX(listPlanete.get(0).getPos().getX());
-        simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY());
-        simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX()-1);
+        simulatedVoyageur.getPosTete().setY(listPlanete.get(0).getPos().getY()+1);
+        simulatedVoyageur.getPosBody().setX(listPlanete.get(0).getPos().getX());
         simulatedVoyageur.getPosBody().setY(listPlanete.get(0).getPos().getY());
-        simulatedVoyageur.setDirection("S");
+        simulatedVoyageur.setDirection("E");
         
         Voyage voyage = new Voyage(listPlanete, simulatedVoyageur);
 
