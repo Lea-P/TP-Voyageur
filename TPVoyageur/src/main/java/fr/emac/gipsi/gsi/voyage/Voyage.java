@@ -82,9 +82,9 @@ public class Voyage extends AbstractVoyage {
         		}
         	}
             Planete prochaine = visitPossible.get(0);
-            int distance = (prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(prochaine.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(prochaine.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
+            int distance = (prochaine.getPos().getX()-actuelle.getPos().getX())*(prochaine.getPos().getX()-actuelle.getPos().getX())+(prochaine.getPos().getY()-actuelle.getPos().getY())*(prochaine.getPos().getY()-actuelle.getPos().getY());
             for(Planete at : visitPossible ) {
-            	int distat = (at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())*(at.getPos().getX()-getSimulatedvoyageur().getPosTete().getX())+(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY())*(at.getPos().getY()-getSimulatedvoyageur().getPosTete().getY());
+            	int distat = (at.getPos().getX()-actuelle.getPos().getX())*(at.getPos().getX()-actuelle.getPos().getX())+(at.getPos().getY()-actuelle.getPos().getY())*(at.getPos().getY()-actuelle.getPos().getY());
             	if (distat < distance) {
             		prochaine = at;
             		distance = distat;
