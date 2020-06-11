@@ -26,13 +26,9 @@ public class LaunchAnimation {
 	 */
 	public static void main(String[] args) {
 		
-<<<<<<< HEAD
+
 		AbstractAnimation aa = new AnimationRideau();
 		aa.setEcranDeb(ListScreen.typeDark());
-=======
-		AbstractAnimation aa = new AnimationFlash();
-		aa.setEcranDeb(ListScreen.typePsychic());
->>>>>>> 3799284affcf814e598304683e1bfe2d2c9c4b6f
 		aa.setEcranFin(ListScreen.Black());
 		
 		aa.wait(1000);
@@ -41,11 +37,7 @@ public class LaunchAnimation {
 
 		aa.wait(1000);
 		
-<<<<<<< HEAD
 		AbstractAnimation ab = new AnimationRideau();
-=======
-		AbstractAnimation ab = new AnimationFlash();
->>>>>>> 3799284affcf814e598304683e1bfe2d2c9c4b6f
 		ab.setEcranDeb(ListScreen.Black());
 		ab.setEcranFin(ListScreen.Noctali());
 		
