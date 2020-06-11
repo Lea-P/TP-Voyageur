@@ -20,7 +20,6 @@ public class AnimationHorizontale extends AbstractAnimation {
 			ecranInt.updateColorByXY(ecranInt.getColMax(), ecranInt.getColMax()-i, ecranFin.getColorByXY(ecranInt.getColMax(),ecranInt.getColMax()-i));
 			this.wait(10);
 			this.showScreen(ecranInt);
-			
 		}
 		
 	}

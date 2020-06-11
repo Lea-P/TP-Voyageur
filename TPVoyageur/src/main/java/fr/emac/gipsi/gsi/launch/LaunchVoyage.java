@@ -45,6 +45,9 @@ public class LaunchVoyage {
         p4.getPos().setX(2);
         p4.getPos().setY(8);
         listPlanete.add(p4);
+        
+        Planete p5 = new Planete();
+        listPlanete.add(p5);
 
         p1.getListAccessibilite().add(p2);
         p2.getListAccessibilite().add(p1);
