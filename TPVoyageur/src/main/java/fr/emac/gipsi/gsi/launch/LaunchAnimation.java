@@ -26,8 +26,9 @@ public class LaunchAnimation {
 	 */
 	public static void main(String[] args) {
 		
-		AbstractAnimation aa = new AnimationFlash();
-		aa.setEcranDeb(ListScreen.typePsychic());
+
+		AbstractAnimation aa = new AnimationRideau();
+		aa.setEcranDeb(ListScreen.typeDark());
 		aa.setEcranFin(ListScreen.Black());
 		
 		aa.wait(1000);
