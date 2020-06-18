@@ -2,6 +2,7 @@ package fr.emac.gipsi.gsi.launch;
 
 import java.util.ArrayList;
 
+import fr.emac.gipsi.gsi.ecran.ListScreen;
 import fr.emac.gipsi.gsi.screen.Screen;
 import fr.emac.gipsi.gsi.voyage.Planete;
 import fr.emac.gipsi.gsi.voyage.Voyage;
@@ -15,53 +16,58 @@ public class LaunchVoyage {
 
         Planete p1 = new Planete();
         p1.setColorName("DarkSalmon");
-        p1.setEchantillonRoche(new Screen());
-        p1.setEchantillonSol(new Screen());
-        p1.setRayon(0);
-        p1.getPos().setX(2);
-        p1.getPos().setY(2);
+        p1.setImage(ListScreen.typeDark());
+        p1.setEchantillonRoche(ListScreen.evoli());
+        p1.setEchantillonSol(ListScreen.Noctali());
+        p1.setRayon(1);
+        p1.getPos().setX(5);
+        p1.getPos().setY(5);
         listPlanete.add(p1);
 
         Planete p2 = new Planete();
         p2.setColorName("DeepPink");
-        p2.setEchantillonRoche(new Screen());
-        p2.setEchantillonSol(new Screen());
-        p2.setRayon(0);
-        p2.getPos().setX(3);
-        p2.getPos().setY(4);
+        p2.setImage(ListScreen.typeFairy());
+        p2.setEchantillonRoche(ListScreen.evoli());
+        p2.setEchantillonSol(ListScreen.nymphali());
+        p2.setRayon(1);
+        p2.getPos().setX(15);
+        p2.getPos().setY(20);
         listPlanete.add(p2);
 
         Planete p3 = new Planete();
         p3.setColorName("DeepPink");
-        p3.setEchantillonRoche(new Screen());
-        p3.setEchantillonSol(new Screen());
-        p3.setRayon(0);
-        p3.getPos().setX(6);
-        p3.getPos().setY(7);
+        p3.setImage(ListScreen.typeWater());
+        p3.setEchantillonRoche(ListScreen.aquali());
+        p3.setRayon(1);
+        p3.getPos().setX(30);
+        p3.getPos().setY(35);
         listPlanete.add(p3);
         
         Planete p4 = new Planete();
         p4.setColorName("DeepPink");
-        p4.setEchantillonRoche(new Screen());
-        p4.setRayon(0);
-        p4.getPos().setX(3);
-        p4.getPos().setY(1);
+        p4.setImage(ListScreen.typeFire());
+        p4.setEchantillonRoche(ListScreen.Pyroli());
+        p4.setRayon(1);
+        p4.getPos().setX(15);
+        p4.getPos().setY(5);
         listPlanete.add(p4);
         
         Planete p5 = new Planete();
         p5.setColorName("DeepPink");
-        p5.setEchantillonRoche(new Screen());
-        p5.setRayon(0);
-        p5.getPos().setX(8);
-        p5.getPos().setY(7);
+        p5.setImage(ListScreen.typeGrass());
+        p5.setEchantillonSol(ListScreen.phyllali());
+        p5.setRayon(1);
+        p5.getPos().setX(40);
+        p5.getPos().setY(35);
         listPlanete.add(p5);
         
         Planete p6 = new Planete();
         p6.setColorName("DeepPink");
-        p6.setEchantillonRoche(new Screen());
-        p6.setRayon(0);
-        p6.getPos().setX(6);
-        p6.getPos().setY(10);
+        p6.setImage(ListScreen.typePsychic());
+        p6.setEchantillonRoche(ListScreen.mentali());
+        p6.setRayon(1);
+        p6.getPos().setX(30);
+        p6.getPos().setY(40);
         listPlanete.add(p6);
         
         p1.getListAccessibilite().add(p2);
