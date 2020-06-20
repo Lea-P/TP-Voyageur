@@ -130,6 +130,233 @@ public class Voyage extends AbstractVoyage {
         		ae.runAnimation();
     		}
 		}
+        for (Planete vu : actuelle.getListVisibilite() ) {
+    		if (vu.getEchantillonSol()==null) {
+    			if (getSimulatedvoyageur().getPosTete().getY()==vu.getPos().getY()) {
+    				if (Math.abs(getSimulatedvoyageur().getPosTete().getX()-vu.getPos().getX())<Math.abs(actuelle.getPos().getX()-vu.getPos().getX())) {
+    					getSimulatedvoyageur().takePicture(vu);
+    		        	afficheEcran();
+    		    		AbstractAnimation a = new AnimationRideau();
+    		    		a.setEcranDeb(ListScreen.Black());
+    		    		a.setEcranFin(vu.getImage());
+    		    		a.wait(1000);
+    		    		a.runAnimation();
+    		    		AbstractAnimation aa = new AnimationRideau();
+    		    		aa.setEcranDeb(vu.getImage());
+    		    		aa.setEcranFin(ListScreen.Black());
+    		    		aa.wait(1000);
+    		    		aa.runAnimation();
+    					alreadyVisit.add(vu);
+    					afficheEcran();
+    					wait(500);
+    				} else {
+    					getSimulatedvoyageur().turnLeft();
+    					getSimulatedvoyageur().turnLeft();
+    					getSimulatedvoyageur().takePicture(vu);
+    		        	afficheEcran();
+    		    		AbstractAnimation a = new AnimationRideau();
+    		    		a.setEcranDeb(ListScreen.Black());
+    		    		a.setEcranFin(vu.getImage());
+    		    		a.wait(1000);
+    		    		a.runAnimation();
+    		    		AbstractAnimation aa = new AnimationRideau();
+    		    		aa.setEcranDeb(vu.getImage());
+    		    		aa.setEcranFin(ListScreen.Black());
+    		    		aa.wait(1000);
+    		    		aa.runAnimation();            					
+    					alreadyVisit.add(vu);
+    					afficheEcran();
+    					wait(500);
+    				}
+    			} else if (getSimulatedvoyageur().getPosTete().getX()==vu.getPos().getX()) {
+    				if (Math.abs(getSimulatedvoyageur().getPosTete().getY()-vu.getPos().getY())<Math.abs(actuelle.getPos().getY()-vu.getPos().getY())) {
+    					getSimulatedvoyageur().takePicture(vu);
+    		        	afficheEcran();
+    		    		AbstractAnimation a = new AnimationRideau();
+    		    		a.setEcranDeb(ListScreen.Black());
+    		    		a.setEcranFin(vu.getImage());
+    		    		a.wait(1000);
+    		    		a.runAnimation();
+    		    		AbstractAnimation aa = new AnimationRideau();
+    		    		aa.setEcranDeb(vu.getImage());
+    		    		aa.setEcranFin(ListScreen.Black());
+    		    		aa.wait(1000);
+    		    		aa.runAnimation();            					
+    					alreadyVisit.add(vu);
+    					afficheEcran();
+    					wait(500);
+    				} else {
+    					getSimulatedvoyageur().turnLeft();
+    					getSimulatedvoyageur().turnLeft();
+    					getSimulatedvoyageur().takePicture(vu);
+    		        	afficheEcran();
+    		    		AbstractAnimation a = new AnimationRideau();
+    		    		a.setEcranDeb(ListScreen.Black());
+    		    		a.setEcranFin(vu.getImage());
+    		    		a.wait(1000);
+    		    		a.runAnimation();
+    		    		AbstractAnimation aa = new AnimationRideau();
+    		    		aa.setEcranDeb(vu.getImage());
+    		    		aa.setEcranFin(ListScreen.Black());
+    		    		aa.wait(1000);
+    		    		aa.runAnimation();            					
+    					alreadyVisit.add(vu);
+    					afficheEcran();
+    					wait(500);
+    				}
+    			} else if (getSimulatedvoyageur().getPosTete().getX()!=vu.getPos().getX() && getSimulatedvoyageur().getPosTete().getY()!=vu.getPos().getY()) {
+    				if (getSimulatedvoyageur().getDirection()=="E" || getSimulatedvoyageur().getDirection()=="W") {
+    					if (getSimulatedvoyageur().getPosTete().getX()>vu.getPos().getX()) {
+    						if (getSimulatedvoyageur().getDirection()=="E") {
+    							getSimulatedvoyageur().turnLeft();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						} else {
+    							getSimulatedvoyageur().turnRight();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						}
+    					} else if (getSimulatedvoyageur().getPosTete().getX()<vu.getPos().getX()) {
+    						if (getSimulatedvoyageur().getDirection()=="E") {
+    							getSimulatedvoyageur().turnRight();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						} else {
+    							getSimulatedvoyageur().turnLeft();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						}
+    					}
+    				} else if (getSimulatedvoyageur().getDirection()=="N" || getSimulatedvoyageur().getDirection()=="S") {
+    					if (getSimulatedvoyageur().getPosTete().getY()>vu.getPos().getY()) {
+    						if (getSimulatedvoyageur().getDirection()=="N") {
+    							getSimulatedvoyageur().turnLeft();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						} else {
+    							getSimulatedvoyageur().turnRight();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						}
+    					} else if (getSimulatedvoyageur().getPosTete().getY()<vu.getPos().getY()) {
+    						if (getSimulatedvoyageur().getDirection()=="N") {
+    							getSimulatedvoyageur().turnRight();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						} else {
+    							getSimulatedvoyageur().turnLeft();
+            					getSimulatedvoyageur().takePicture(vu);
+            		        	afficheEcran();
+            		    		AbstractAnimation a = new AnimationRideau();
+            		    		a.setEcranDeb(ListScreen.Black());
+            		    		a.setEcranFin(vu.getImage());
+            		    		a.wait(1000);
+            		    		a.runAnimation();
+            		    		AbstractAnimation aa = new AnimationRideau();
+            		    		aa.setEcranDeb(vu.getImage());
+            		    		aa.setEcranFin(ListScreen.Black());
+            		    		aa.wait(1000);
+            		    		aa.runAnimation();            							
+    							alreadyVisit.add(vu);
+    							afficheEcran();
+    							wait(500);
+    						}
+    					}
+    				}
+    			}
+    		}
+    	}
   
     	
         while (alreadyVisit.size() != this.listPlanete.size()) {
@@ -141,10 +368,8 @@ public class Voyage extends AbstractVoyage {
         	listprochaine.add(actuelle);
         	listchemin.add(new ArrayList<Planete>());
         	listchemin.get(0).add(actuelle);
-        	listdistance.add(999);
+        	listdistance.add(9999);
         	for (Planete access1 : actuelle.getListAccessibilite()) {
-        		if (listprochaine.contains(access1)) {
-        		} else {
                 	listprochaine.add(access1);
                 	listchemin.add(new ArrayList<Planete>());
                 	int taille1 = listchemin.size()-1;
@@ -153,8 +378,6 @@ public class Voyage extends AbstractVoyage {
                 	listdistance.add(dist1);
                 	if (access1.getListAccessibilite().size() != 0) {
             			for (Planete access2 : access1.getListAccessibilite()) {
-                    		if (listprochaine.contains(access2)) {
-                    		} else {
                             	listprochaine.add(access2);
                             	listchemin.add(new ArrayList<Planete>());
                             	int taille2 = listchemin.size()-1;
@@ -164,8 +387,6 @@ public class Voyage extends AbstractVoyage {
                             	listdistance.add(dist1+dist2);
                             	if (access2.getListAccessibilite().size() != 0) {
                         			for (Planete access3 : access2.getListAccessibilite()) {
-                                		if (listprochaine.contains(access3)) {
-                                		} else {
                                         	listprochaine.add(access3);
                                         	listchemin.add(new ArrayList<Planete>());
                                         	int taille3 = listchemin.size()-1;
@@ -176,8 +397,6 @@ public class Voyage extends AbstractVoyage {
                                         	listdistance.add(dist1+dist2+dist3);
                                         	if (access3.getListAccessibilite().size() != 0) {
                                     			for (Planete access4 : access3.getListAccessibilite()) {
-                                            		if (listprochaine.contains(access4)) {
-                                            		} else {
                                                     	listprochaine.add(access4);
                                                     	listchemin.add(new ArrayList<Planete>());
                                                     	int taille4 = listchemin.size()-1;
@@ -189,31 +408,24 @@ public class Voyage extends AbstractVoyage {
                                                     	listdistance.add(dist1+dist2+dist3+dist4);
                                                     	if (access4.getListAccessibilite().size() != 0) {
                                                 			for (Planete access5 : access4.getListAccessibilite()) {
-                                                        		if (listprochaine.contains(access5)) {
-                                                        		} else {
-                                                                	listprochaine.add(access5);
-                                                                	listchemin.add(new ArrayList<Planete>());
-                                                                	int taille5 = listchemin.size()-1;
-                                                                	listchemin.get(taille5).add(access1);
-                                                                	listchemin.get(taille5).add(access2);
-                                                                	listchemin.get(taille5).add(access3);
-                                                                	listchemin.get(taille5).add(access4);
-                                                                	listchemin.get(taille5).add(access5);
-                                                                	int dist5 = (access5.getPos().getX()-access4.getPos().getX())*(access5.getPos().getX()-access4.getPos().getX())+(access5.getPos().getY()-access4.getPos().getY())*(access5.getPos().getY()-access4.getPos().getY());
-                                                                	listdistance.add(dist1+dist2+dist3+dist4+dist5);
-                                                        		}
+                                                                listprochaine.add(access5);
+                                                                listchemin.add(new ArrayList<Planete>());
+                                                                int taille5 = listchemin.size()-1;
+                                                                listchemin.get(taille5).add(access1);
+                                                                listchemin.get(taille5).add(access2);
+                                                                listchemin.get(taille5).add(access3);
+                                                                listchemin.get(taille5).add(access4);
+                                                                listchemin.get(taille5).add(access5);
+                                                                int dist5 = (access5.getPos().getX()-access4.getPos().getX())*(access5.getPos().getX()-access4.getPos().getX())+(access5.getPos().getY()-access4.getPos().getY())*(access5.getPos().getY()-access4.getPos().getY());
+                                                                listdistance.add(dist1+dist2+dist3+dist4+dist5);
                                                         	}
                                                 		}
-                                            		}
                                             	}
                                     		}
-                                		}
                                 	}
                         		}
-                    		}
                     	}
             		}
-        		}
         	}
         	
         	
@@ -229,13 +441,19 @@ public class Voyage extends AbstractVoyage {
                 		prochaine = listprochaine.get(i);
                 		mindistance = listdistance.get(i);
             		}
-            		if (alreadyVisit.contains(listprochaine.get(i)) || chemin!=listchemin.get(0)) {
-            		} else {
-            			chemin = listchemin.get(i);
-                		prochaine = listprochaine.get(i);
-                		mindistance = listdistance.get(i);
-                		chemin.remove(prochaine);
-            		}
+            	}
+            }
+            if (chemin==listchemin.get(0)) {
+            	for (int i = 1; i<listdistance.size(); i++){
+                	if (listdistance.get(i)<mindistance && listdistance.get(i)>0) {
+                		if (alreadyVisit.contains(listprochaine.get(i))) {
+                		} else {
+                    		chemin = listchemin.get(i);
+                    		prochaine = listprochaine.get(i);
+                    		mindistance = listdistance.get(i);
+                    		chemin.remove(prochaine);
+                		}
+                	}
             	}
             }
             
@@ -269,7 +487,7 @@ public class Voyage extends AbstractVoyage {
                         	wait(200);
                         	afficheEcran();
                     	}
-                    } else if (P.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
+                    } else if (P.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()==0) {
                     } else {
                         getSimulatedvoyageur().turnLeft();
                         wait(200);
@@ -308,7 +526,7 @@ public class Voyage extends AbstractVoyage {
                         	wait(200);
                         	afficheEcran();
                     	}
-                    } else if (P.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
+                    } else if (P.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()==0) {
                     } else {
                         getSimulatedvoyageur().turnLeft();
                         wait(200);
@@ -328,9 +546,9 @@ public class Voyage extends AbstractVoyage {
                         	wait(200);
                         	afficheEcran();
                         }
-                    } else if (P.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
+                    } else if (P.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()==0) {
                     } else {
-                    	int X = getSimulatedvoyageur().getPosTete().getY();
+                    	int X = getSimulatedvoyageur().getPosTete().getX();
                     	for (int i = X; i<P.getPos().getX()-1; i++){
                         	getSimulatedvoyageur().goBackward();
                         	wait(200);
@@ -367,7 +585,7 @@ public class Voyage extends AbstractVoyage {
                         	wait(200);
                         	afficheEcran();
                         }
-                    } else if (P.getPos().getY()-getSimulatedvoyageur().getPosTete().getY()==0) {
+                    } else if (P.getPos().getX()-getSimulatedvoyageur().getPosTete().getX()==0) {
                     } else {
                     	int X = getSimulatedvoyageur().getPosTete().getX();
                     	for (int i = P.getPos().getX(); i<X-1; i++){
@@ -402,7 +620,7 @@ public class Voyage extends AbstractVoyage {
                 
                 
                 actuelle = P;
-                ArrayList<Planete> vuePossible = actuelle.getListAccessibilite();
+                ArrayList<Planete> vuePossible = actuelle.getListVisibilite();
             	for ( Planete in : alreadyVisit ) {
             		vuePossible.remove(in);
             	}
