@@ -97,12 +97,12 @@ public class Voyage extends AbstractVoyage {
         	getSimulatedvoyageur().takeEchantillonSol(actuelle);
         	getSimulatedvoyageur().takeEchantillonRoche(actuelle);
         	afficheEcran();
-    		AbstractAnimation a = new AnimationRideau();
+    		AbstractAnimation a = new AnimationSpirale();
     		a.setEcranDeb(ListScreen.Black());
     		a.setEcranFin(actuelle.getImage());
     		a.wait(1000);
     		a.runAnimation();
-    		AbstractAnimation aa = new AnimationRideau();
+    		AbstractAnimation aa = new AnimationSpirale2();
     		aa.setEcranDeb(actuelle.getImage());
     		aa.setEcranFin(ListScreen.Black());
     		aa.wait(1000);
@@ -118,12 +118,12 @@ public class Voyage extends AbstractVoyage {
     		ac.wait(1000);
     		ac.runAnimation();
     		if (actuelle.getEchantillonRoche()!=null) {
-        		AbstractAnimation ad = new AnimationHorizontale();
+        		AbstractAnimation ad = new AnimationShrink();
         		ad.setEcranDeb(ListScreen.Black());
         		ad.setEcranFin(actuelle.getEchantillonRoche());
         		ad.wait(1000);
         		ad.runAnimation();
-        		AbstractAnimation ae = new AnimationHorizontale();
+        		AbstractAnimation ae = new AnimationShrink();
         		ae.setEcranDeb(actuelle.getEchantillonRoche());
         		ae.setEcranFin(ListScreen.Black());
         		ae.wait(1000);
@@ -885,23 +885,23 @@ public class Voyage extends AbstractVoyage {
                     		aa.setEcranFin(ListScreen.Black());
                     		aa.wait(1000);
                     		aa.runAnimation();
-                    		AbstractAnimation ab = new AnimationRideau();
+                    		AbstractAnimation ab = new AnimationHorizontale();
                     		ab.setEcranDeb(ListScreen.Black());
                     		ab.setEcranFin(P.getEchantillonSol());
                     		ab.wait(1000);
                     		ab.runAnimation();
-                    		AbstractAnimation ac = new AnimationRideau();
+                    		AbstractAnimation ac = new AnimationHorizontale();
                     		ac.setEcranDeb(P.getEchantillonSol());
                     		ac.setEcranFin(ListScreen.Black());
                     		ac.wait(1000);
                     		ac.runAnimation();
                     		if (P.getEchantillonRoche()!=null) {
-                        		AbstractAnimation ad = new AnimationRideau();
+                        		AbstractAnimation ad = new AnimationSplit();
                         		ad.setEcranDeb(ListScreen.Black());
                         		ad.setEcranFin(P.getEchantillonRoche());
                         		ad.wait(1000);
                         		ad.runAnimation();
-                        		AbstractAnimation ae = new AnimationRideau();
+                        		AbstractAnimation ae = new AnimationSplit();
                         		ae.setEcranDeb(P.getEchantillonRoche());
                         		ae.setEcranFin(ListScreen.Black());
                         		ae.wait(1000);

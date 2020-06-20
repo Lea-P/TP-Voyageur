@@ -3,7 +3,6 @@ package fr.emac.gipsi.gsi.launch;
 import java.util.ArrayList;
 
 import fr.emac.gipsi.gsi.ecran.ListScreen;
-import fr.emac.gipsi.gsi.screen.Screen;
 import fr.emac.gipsi.gsi.voyage.Planete;
 import fr.emac.gipsi.gsi.voyage.Voyage;
 import fr.emac.gipsi.gsi.voyageur.AbstractVoyageur;
