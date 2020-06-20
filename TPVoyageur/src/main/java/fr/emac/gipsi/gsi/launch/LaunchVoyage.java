@@ -55,7 +55,7 @@ public class LaunchVoyage {
         Planete p5 = new Planete();
         p5.setColorName("DeepPink");
         p5.setImage(ListScreen.typeGrass());
-        p5.setEchantillonSol(ListScreen.phyllali());
+        p5.setEchantillonRoche(ListScreen.phyllali());
         p5.setRayon(1);
         p5.getPos().setX(40);
         p5.getPos().setY(35);
@@ -78,8 +78,8 @@ public class LaunchVoyage {
         p4.getListAccessibilite().add(p2);
         p3.getListAccessibilite().add(p5);
         p5.getListAccessibilite().add(p3);
-        p3.getListAccessibilite().add(p6);
-        p6.getListAccessibilite().add(p3);
+        p5.getListAccessibilite().add(p6);
+        p6.getListAccessibilite().add(p5);
 
         
         p1.getListVisibilite().add(p2);

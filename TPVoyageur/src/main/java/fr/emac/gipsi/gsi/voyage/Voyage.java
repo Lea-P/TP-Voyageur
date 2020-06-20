@@ -97,12 +97,12 @@ public class Voyage extends AbstractVoyage {
         	getSimulatedvoyageur().takeEchantillonSol(actuelle);
         	getSimulatedvoyageur().takeEchantillonRoche(actuelle);
         	afficheEcran();
-    		AbstractAnimation a = new AnimationShrink();
+    		AbstractAnimation a = new AnimationRideau();
     		a.setEcranDeb(ListScreen.Black());
     		a.setEcranFin(actuelle.getImage());
     		a.wait(1000);
     		a.runAnimation();
-    		AbstractAnimation aa = new AnimationShrink();
+    		AbstractAnimation aa = new AnimationRideau();
     		aa.setEcranDeb(actuelle.getImage());
     		aa.setEcranFin(ListScreen.Black());
     		aa.wait(1000);
@@ -228,6 +228,13 @@ public class Voyage extends AbstractVoyage {
                 		chemin = listchemin.get(i);
                 		prochaine = listprochaine.get(i);
                 		mindistance = listdistance.get(i);
+            		}
+            		if (alreadyVisit.contains(listprochaine.get(i)) || chemin!=listchemin.get(0)) {
+            		} else {
+            			chemin = listchemin.get(i);
+                		prochaine = listprochaine.get(i);
+                		mindistance = listdistance.get(i);
+                		chemin.remove(prochaine);
             		}
             	}
             }
@@ -399,234 +406,235 @@ public class Voyage extends AbstractVoyage {
             	for ( Planete in : alreadyVisit ) {
             		vuePossible.remove(in);
             	}
-            	for (Planete vu : vuePossible ) {
-            		if (vu.getEchantillonSol()==null) {
-            			if (getSimulatedvoyageur().getPosTete().getY()==vu.getPos().getY()) {
-            				if (Math.abs(getSimulatedvoyageur().getPosTete().getX()-vu.getPos().getX())<Math.abs(P.getPos().getX()-vu.getPos().getX())) {
-            					getSimulatedvoyageur().takePicture(vu);
-            		        	afficheEcran();
-            		    		AbstractAnimation a = new AnimationRideau();
-            		    		a.setEcranDeb(ListScreen.Black());
-            		    		a.setEcranFin(vu.getImage());
-            		    		a.wait(1000);
-            		    		a.runAnimation();
-            		    		AbstractAnimation aa = new AnimationRideau();
-            		    		aa.setEcranDeb(vu.getImage());
-            		    		aa.setEcranFin(ListScreen.Black());
-            		    		aa.wait(1000);
-            		    		aa.runAnimation();
-            					alreadyVisit.add(vu);
-            					afficheEcran();
-            					wait(500);
-            				} else {
-            					getSimulatedvoyageur().turnLeft();
-            					getSimulatedvoyageur().turnLeft();
-            					getSimulatedvoyageur().takePicture(vu);
-            		        	afficheEcran();
-            		    		AbstractAnimation a = new AnimationRideau();
-            		    		a.setEcranDeb(ListScreen.Black());
-            		    		a.setEcranFin(vu.getImage());
-            		    		a.wait(1000);
-            		    		a.runAnimation();
-            		    		AbstractAnimation aa = new AnimationRideau();
-            		    		aa.setEcranDeb(vu.getImage());
-            		    		aa.setEcranFin(ListScreen.Black());
-            		    		aa.wait(1000);
-            		    		aa.runAnimation();            					
-            					alreadyVisit.add(vu);
-            					afficheEcran();
-            					wait(500);
-            				}
-            			} else if (getSimulatedvoyageur().getPosTete().getX()==vu.getPos().getX()) {
-            				if (Math.abs(getSimulatedvoyageur().getPosTete().getY()-vu.getPos().getY())<Math.abs(P.getPos().getY()-vu.getPos().getY())) {
-            					getSimulatedvoyageur().takePicture(vu);
-            		        	afficheEcran();
-            		    		AbstractAnimation a = new AnimationRideau();
-            		    		a.setEcranDeb(ListScreen.Black());
-            		    		a.setEcranFin(vu.getImage());
-            		    		a.wait(1000);
-            		    		a.runAnimation();
-            		    		AbstractAnimation aa = new AnimationRideau();
-            		    		aa.setEcranDeb(vu.getImage());
-            		    		aa.setEcranFin(ListScreen.Black());
-            		    		aa.wait(1000);
-            		    		aa.runAnimation();            					
-            					alreadyVisit.add(vu);
-            					afficheEcran();
-            					wait(500);
-            				} else {
-            					getSimulatedvoyageur().turnLeft();
-            					getSimulatedvoyageur().turnLeft();
-            					getSimulatedvoyageur().takePicture(vu);
-            		        	afficheEcran();
-            		    		AbstractAnimation a = new AnimationRideau();
-            		    		a.setEcranDeb(ListScreen.Black());
-            		    		a.setEcranFin(vu.getImage());
-            		    		a.wait(1000);
-            		    		a.runAnimation();
-            		    		AbstractAnimation aa = new AnimationRideau();
-            		    		aa.setEcranDeb(vu.getImage());
-            		    		aa.setEcranFin(ListScreen.Black());
-            		    		aa.wait(1000);
-            		    		aa.runAnimation();            					
-            					alreadyVisit.add(vu);
-            					afficheEcran();
-            					wait(500);
-            				}
-            			} else if (getSimulatedvoyageur().getPosTete().getX()!=vu.getPos().getX() && getSimulatedvoyageur().getPosTete().getY()!=vu.getPos().getY()) {
-            				if (getSimulatedvoyageur().getDirection()=="E" || getSimulatedvoyageur().getDirection()=="W") {
-            					if (getSimulatedvoyageur().getPosTete().getX()>vu.getPos().getX()) {
-            						if (getSimulatedvoyageur().getDirection()=="E") {
-            							getSimulatedvoyageur().turnLeft();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						} else {
-            							getSimulatedvoyageur().turnRight();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						}
-            					} else if (getSimulatedvoyageur().getPosTete().getX()<vu.getPos().getX()) {
-            						if (getSimulatedvoyageur().getDirection()=="E") {
-            							getSimulatedvoyageur().turnRight();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						} else {
-            							getSimulatedvoyageur().turnLeft();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						}
-            					}
-            				} else if (getSimulatedvoyageur().getDirection()=="N" || getSimulatedvoyageur().getDirection()=="S") {
-            					if (getSimulatedvoyageur().getPosTete().getY()>vu.getPos().getY()) {
-            						if (getSimulatedvoyageur().getDirection()=="N") {
-            							getSimulatedvoyageur().turnLeft();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						} else {
-            							getSimulatedvoyageur().turnRight();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						}
-            					} else if (getSimulatedvoyageur().getPosTete().getY()<vu.getPos().getY()) {
-            						if (getSimulatedvoyageur().getDirection()=="N") {
-            							getSimulatedvoyageur().turnRight();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						} else {
-            							getSimulatedvoyageur().turnLeft();
-                    					getSimulatedvoyageur().takePicture(vu);
-                    		        	afficheEcran();
-                    		    		AbstractAnimation a = new AnimationRideau();
-                    		    		a.setEcranDeb(ListScreen.Black());
-                    		    		a.setEcranFin(vu.getImage());
-                    		    		a.wait(1000);
-                    		    		a.runAnimation();
-                    		    		AbstractAnimation aa = new AnimationRideau();
-                    		    		aa.setEcranDeb(vu.getImage());
-                    		    		aa.setEcranFin(ListScreen.Black());
-                    		    		aa.wait(1000);
-                    		    		aa.runAnimation();            							
-            							alreadyVisit.add(vu);
-            							afficheEcran();
-            							wait(500);
-            						}
-            					}
-            				}
-            			}
-            		}
+            	if (vuePossible != null ) {
+            		for (Planete vu : vuePossible ) {
+                		if (vu.getEchantillonSol()==null) {
+                			if (getSimulatedvoyageur().getPosTete().getY()==vu.getPos().getY()) {
+                				if (Math.abs(getSimulatedvoyageur().getPosTete().getX()-vu.getPos().getX())<Math.abs(P.getPos().getX()-vu.getPos().getX())) {
+                					getSimulatedvoyageur().takePicture(vu);
+                		        	afficheEcran();
+                		    		AbstractAnimation a = new AnimationRideau();
+                		    		a.setEcranDeb(ListScreen.Black());
+                		    		a.setEcranFin(vu.getImage());
+                		    		a.wait(1000);
+                		    		a.runAnimation();
+                		    		AbstractAnimation aa = new AnimationRideau();
+                		    		aa.setEcranDeb(vu.getImage());
+                		    		aa.setEcranFin(ListScreen.Black());
+                		    		aa.wait(1000);
+                		    		aa.runAnimation();
+                					alreadyVisit.add(vu);
+                					afficheEcran();
+                					wait(500);
+                				} else {
+                					getSimulatedvoyageur().turnLeft();
+                					getSimulatedvoyageur().turnLeft();
+                					getSimulatedvoyageur().takePicture(vu);
+                		        	afficheEcran();
+                		    		AbstractAnimation a = new AnimationRideau();
+                		    		a.setEcranDeb(ListScreen.Black());
+                		    		a.setEcranFin(vu.getImage());
+                		    		a.wait(1000);
+                		    		a.runAnimation();
+                		    		AbstractAnimation aa = new AnimationRideau();
+                		    		aa.setEcranDeb(vu.getImage());
+                		    		aa.setEcranFin(ListScreen.Black());
+                		    		aa.wait(1000);
+                		    		aa.runAnimation();            					
+                					alreadyVisit.add(vu);
+                					afficheEcran();
+                					wait(500);
+                				}
+                			} else if (getSimulatedvoyageur().getPosTete().getX()==vu.getPos().getX()) {
+                				if (Math.abs(getSimulatedvoyageur().getPosTete().getY()-vu.getPos().getY())<Math.abs(P.getPos().getY()-vu.getPos().getY())) {
+                					getSimulatedvoyageur().takePicture(vu);
+                		        	afficheEcran();
+                		    		AbstractAnimation a = new AnimationRideau();
+                		    		a.setEcranDeb(ListScreen.Black());
+                		    		a.setEcranFin(vu.getImage());
+                		    		a.wait(1000);
+                		    		a.runAnimation();
+                		    		AbstractAnimation aa = new AnimationRideau();
+                		    		aa.setEcranDeb(vu.getImage());
+                		    		aa.setEcranFin(ListScreen.Black());
+                		    		aa.wait(1000);
+                		    		aa.runAnimation();            					
+                					alreadyVisit.add(vu);
+                					afficheEcran();
+                					wait(500);
+                				} else {
+                					getSimulatedvoyageur().turnLeft();
+                					getSimulatedvoyageur().turnLeft();
+                					getSimulatedvoyageur().takePicture(vu);
+                		        	afficheEcran();
+                		    		AbstractAnimation a = new AnimationRideau();
+                		    		a.setEcranDeb(ListScreen.Black());
+                		    		a.setEcranFin(vu.getImage());
+                		    		a.wait(1000);
+                		    		a.runAnimation();
+                		    		AbstractAnimation aa = new AnimationRideau();
+                		    		aa.setEcranDeb(vu.getImage());
+                		    		aa.setEcranFin(ListScreen.Black());
+                		    		aa.wait(1000);
+                		    		aa.runAnimation();            					
+                					alreadyVisit.add(vu);
+                					afficheEcran();
+                					wait(500);
+                				}
+                			} else if (getSimulatedvoyageur().getPosTete().getX()!=vu.getPos().getX() && getSimulatedvoyageur().getPosTete().getY()!=vu.getPos().getY()) {
+                				if (getSimulatedvoyageur().getDirection()=="E" || getSimulatedvoyageur().getDirection()=="W") {
+                					if (getSimulatedvoyageur().getPosTete().getX()>vu.getPos().getX()) {
+                						if (getSimulatedvoyageur().getDirection()=="E") {
+                							getSimulatedvoyageur().turnLeft();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						} else {
+                							getSimulatedvoyageur().turnRight();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						}
+                					} else if (getSimulatedvoyageur().getPosTete().getX()<vu.getPos().getX()) {
+                						if (getSimulatedvoyageur().getDirection()=="E") {
+                							getSimulatedvoyageur().turnRight();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						} else {
+                							getSimulatedvoyageur().turnLeft();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						}
+                					}
+                				} else if (getSimulatedvoyageur().getDirection()=="N" || getSimulatedvoyageur().getDirection()=="S") {
+                					if (getSimulatedvoyageur().getPosTete().getY()>vu.getPos().getY()) {
+                						if (getSimulatedvoyageur().getDirection()=="N") {
+                							getSimulatedvoyageur().turnLeft();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						} else {
+                							getSimulatedvoyageur().turnRight();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						}
+                					} else if (getSimulatedvoyageur().getPosTete().getY()<vu.getPos().getY()) {
+                						if (getSimulatedvoyageur().getDirection()=="N") {
+                							getSimulatedvoyageur().turnRight();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						} else {
+                							getSimulatedvoyageur().turnLeft();
+                        					getSimulatedvoyageur().takePicture(vu);
+                        		        	afficheEcran();
+                        		    		AbstractAnimation a = new AnimationRideau();
+                        		    		a.setEcranDeb(ListScreen.Black());
+                        		    		a.setEcranFin(vu.getImage());
+                        		    		a.wait(1000);
+                        		    		a.runAnimation();
+                        		    		AbstractAnimation aa = new AnimationRideau();
+                        		    		aa.setEcranDeb(vu.getImage());
+                        		    		aa.setEcranFin(ListScreen.Black());
+                        		    		aa.wait(1000);
+                        		    		aa.runAnimation();            							
+                							alreadyVisit.add(vu);
+                							afficheEcran();
+                							wait(500);
+                						}
+                					}
+                				}
+                			}
+                		}
+                	}
             	}
-            	
             	
                 if (getSimulatedvoyageur().getPosBody().getX()==P.getPos().getX() && getSimulatedvoyageur().getPosBody().getY()==P.getPos().getY()) {
                 	if (alreadyVisit.contains(P)) {
@@ -682,7 +690,6 @@ public class Voyage extends AbstractVoyage {
                         		ae.runAnimation();
                     		}
                 		}
-                		        		
                     	wait(500);
                     	alreadyVisit.add(P);
                 	}
