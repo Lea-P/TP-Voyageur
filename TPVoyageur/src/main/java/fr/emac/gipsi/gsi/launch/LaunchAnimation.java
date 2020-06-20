@@ -27,7 +27,7 @@ public class LaunchAnimation {
 	public static void main(String[] args) {
 		
 
-		AbstractAnimation aa = new AnimationRideau();
+		AbstractAnimation aa = new AnimationSplit();
 		aa.setEcranDeb(ListScreen.typeDark());
 		aa.setEcranFin(ListScreen.Black());
 		
