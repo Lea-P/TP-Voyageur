@@ -70,6 +70,16 @@ public class Voyage extends AbstractVoyage {
      */
     @Override
     public void lancementSimuler() {
+		AbstractAnimation aza = new AnimationRideau();
+		aza.setEcranDeb(ListScreen.Black());
+		aza.setEcranFin(ListScreen.Avengers());
+		aza.wait(1000);
+		aza.runAnimation();
+		AbstractAnimation aaza = new AnimationRideau();
+		aaza.setEcranDeb(ListScreen.Avengers());
+		aaza.setEcranFin(ListScreen.Black());
+		aaza.wait(1000);
+		aaza.runAnimation();
         afficheEcran();
         Planete actuelle = new Planete();
         for (Planete all : listPlanete) {
@@ -107,6 +117,16 @@ public class Voyage extends AbstractVoyage {
     		aa.setEcranFin(ListScreen.Black());
     		aa.wait(1000);
     		aa.runAnimation();
+    		AbstractAnimation az = new AnimationRideau();
+    		az.setEcranDeb(ListScreen.Black());
+    		az.setEcranFin(ListScreen.pokeball());
+    		az.wait(1000);
+    		az.runAnimation();
+    		AbstractAnimation aaz = new AnimationRideau();
+    		aaz.setEcranDeb(ListScreen.pokeball());
+    		aaz.setEcranFin(ListScreen.Black());
+    		aaz.wait(1000);
+    		aaz.runAnimation();
     		AbstractAnimation ab = new AnimationVerticale();
     		ab.setEcranDeb(ListScreen.Black());
     		ab.setEcranFin(actuelle.getEchantillonSol());
@@ -435,25 +455,19 @@ public class Voyage extends AbstractVoyage {
             int mindistance = listdistance.get(0);
             for (int i = 1; i<listdistance.size(); i++){
             	if (listdistance.get(i)<mindistance && listdistance.get(i)>0) {
-            		if (alreadyVisit.contains(listprochaine.get(i)) || listprochaine.get(i).getEchantillonSol()==null) {
+            		if (alreadyVisit.contains(listprochaine.get(i))) {
             		} else {
-                		chemin = listchemin.get(i);
-                		prochaine = listprochaine.get(i);
-                		mindistance = listdistance.get(i);
-            		}
-            	}
-            }
-            if (chemin==listchemin.get(0)) {
-            	for (int i = 1; i<listdistance.size(); i++){
-                	if (listdistance.get(i)<mindistance && listdistance.get(i)>0) {
-                		if (alreadyVisit.contains(listprochaine.get(i))) {
-                		} else {
+            			if (listprochaine.get(i).getEchantillonSol()==null) {
                     		chemin = listchemin.get(i);
                     		prochaine = listprochaine.get(i);
                     		mindistance = listdistance.get(i);
                     		chemin.remove(prochaine);
-                		}
-                	}
+            			} else {
+                    		chemin = listchemin.get(i);
+                    		prochaine = listprochaine.get(i);
+                    		mindistance = listdistance.get(i);
+            			}
+            		}
             	}
             }
             
@@ -885,6 +899,16 @@ public class Voyage extends AbstractVoyage {
                     		aa.setEcranFin(ListScreen.Black());
                     		aa.wait(1000);
                     		aa.runAnimation();
+                    		AbstractAnimation az = new AnimationRideau();
+                    		az.setEcranDeb(ListScreen.Black());
+                    		az.setEcranFin(ListScreen.pokeball());
+                    		az.wait(1000);
+                    		az.runAnimation();
+                    		AbstractAnimation aaz = new AnimationRideau();
+                    		aaz.setEcranDeb(ListScreen.pokeball());
+                    		aaz.setEcranFin(ListScreen.Black());
+                    		aaz.wait(1000);
+                    		aaz.runAnimation();
                     		AbstractAnimation ab = new AnimationHorizontale();
                     		ab.setEcranDeb(ListScreen.Black());
                     		ab.setEcranFin(P.getEchantillonSol());
@@ -912,7 +936,6 @@ public class Voyage extends AbstractVoyage {
                     	alreadyVisit.add(P);
                 	}
                 }
-                wait(10);
         	}
         }
     }
